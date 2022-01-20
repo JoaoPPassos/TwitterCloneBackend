@@ -20,5 +20,7 @@ Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
 
-Route.post("/user", "UserController.create");
+//Route.resource("user", "UserController").apiOnly();
+
+Route.get("/user/:email", "UserController.exist");
 Route.post("/sessions", "SessionController.create");

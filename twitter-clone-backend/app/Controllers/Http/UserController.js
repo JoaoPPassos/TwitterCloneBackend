@@ -14,7 +14,6 @@ class UserController {
   async show({ params, response }) {
     try {
       const data = await User.findByOrFail("email", params.email);
-      console.log(params.email);
       return response.status(200).send(data);
     } catch (error) {
       return response.status(400).send("error");

@@ -1,5 +1,7 @@
 "use strict";
 
+const { RouteGroup } = require("@adonisjs/framework/src/Route/Manager");
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -22,5 +24,12 @@ Route.get("/", () => {
 
 //Route.resource("user", "UserController").apiOnly();
 
-Route.get("/user/:email", "UserController.exist");
-Route.post("/sessions", "SessionController.create");
+Route.group(() => {
+  Route.get("/user/:id", "UserController.show");
+  Route.post("/user_exist", "UserController.exist");
+  Route.post("/user", "UserController.store");
+});
+
+Route.group(() => {
+  Route.post("/sessions", "SessionController.create");
+});
